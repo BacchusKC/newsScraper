@@ -1,19 +1,118 @@
-li {
-  padding: 5px;
-  margin: 5px;
-  background: #faebd7;
+header {
+  height: 100px;
 }
-
-.label {
-  font-weight: bold;
+body {
+  padding: 0;
+  margin: 0;
 }
-
-.update-form {
-  padding: 5px;
-  margin: 5px;
-  background: aqua;
+h1 {
+  margin: 0;
 }
-
-.form-group {
-  margin-bottom: 5px;
+.dropdown-header {
+  color: black!important;
+  font-size: larger!important;
+}
+.card-img-top {
+  width: 250px!important;
+}
+.card {
+  width: 250px!important;
+  margin: 20px;
+}
+.row {
+  margin: auto!important;
+  max-width: 900px;
+}
+.projs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  max-width: 960px;
+  top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;   
+}
+.projCards {
+  border: 1px solid lightskyblue;
+  padding: 10px;
+  margin-top: 50px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  box-shadow: 10px 10px 5px grey;
+  position: relative;
+}
+.projImg {
+  width:100%;
+  padding: 0 15px;
+}
+.projText {
+  line-height: 30px;
+}
+.buttons {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+}
+.cardText {
+  height: 130px;
+}
+.delete {
+  position: absolute;
+  background-color: red;
+  color: white;
+  top: 0;
+  right: 0;
+  border: solid 1px lightskyblue;
+  font-size: 15px;
+  width: 25px;
+}
+.delete:hover {
+  cursor: pointer;
+}
+.commentsDiv {
+  width: 90%;
+  max-width: 550px;
+  background-color: white;
+  min-height: 200px;
+  margin: auto;
+  display: none;
+  border: 4px solid lightskyblue;
+  box-shadow: 10px 10px 5px grey;
+  position: relative;
+}
+.inputDiv {
+  margin: 12px;
+}
+.commentButtons {
+  margin: 12px;
+}
+#inputComment {
+  width: 100%!important;
+}
+.commentHolder {
+  width: 95%;
+  border: 1px solid lightskyblue;
+  margin: 7px auto;
+  position: relative;
+  min-height: 60px;
+  padding: 10px;
+}
+.deleteComment {
+  position: absolute;
+  background-color: red;
+  color: white;
+  top: 0;
+  right: 0;
+  border: solid 1px lightskyblue;
+  font-size: 15px;
+  width: 25px;
+  text-align: center;
+}
+.deleteComment:hover {
+  cursor: pointer;
 }
