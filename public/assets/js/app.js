@@ -46,6 +46,19 @@ $(document).on("click", ".deleteComment", function() {
   $.get("/commentDelete/"+id).then(function(data){});
 });
 
+//Denver News
+
+$(document).on("click", "#denverScrape", function () {
+  $.get("/denverScrape").then(function (data) {
+    location.reload();
+  });
+});
+
+$(document).on("click", "#denverEmpty", function () {
+  $("#denverArticles").children().remove();
+  $.get("/denverDelete").then(function (data){});
+});
+
 //Gaming
 
 $(document).on("click", "#gamingScrape", function () {
@@ -70,6 +83,19 @@ $(document).on("click", "#kcScrape", function () {
 $(document).on("click", "#kcEmpty", function () {
   $("#kcArticles").children().remove();
   $.get("/kcDelete").then(function (data){});
+});
+
+//Seattle News
+
+$(document).on("click", "#seattleScrape", function () {
+  $.get("/seattleScrape").then(function (data) {
+    location.reload();
+  });
+});
+
+$(document).on("click", "#seattleEmpty", function () {
+  $("#seattleArticles").children().remove();
+  $.get("/seattleDelete").then(function (data){});
 });
 
 //Sports

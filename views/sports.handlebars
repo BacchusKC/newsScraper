@@ -1,5 +1,5 @@
+<div id="sportsTop">Sports</div>
 <header>
-  <div id="sportsTop"></div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <span class="navbar-brand">News Scraper</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -32,7 +32,6 @@
             <a class="dropdown-item" href="/kc">Kansas City</a>
             <a class="dropdown-item" href="/denver">Denver</a>
             <a class="dropdown-item" href="/seattle">Seattle</a>
-            <a class="dropdown-item" href="/phoenix">Phoenix</a>
           </div>
         </li>
         <li class="nav-item">
@@ -49,7 +48,6 @@
     </div>
 </header>
 
-<!-- Pass in data from server.js -->
 <div class="row projs" id="sportsArticles">
   {{#each sportsArts}}
   <div class="projCards portItem" id={{this._id}}>

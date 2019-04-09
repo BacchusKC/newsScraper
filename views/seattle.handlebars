@@ -1,5 +1,5 @@
+<div id="seattleTop">Seattle</div>
 <header>
-    <div id="seattleTop"></div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <span class="navbar-brand">News Scraper</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -32,12 +32,14 @@
                         <a class="dropdown-item" href="/kc">Kansas City</a>
                         <a class="dropdown-item" href="/denver">Denver</a>
                         <a class="dropdown-item active" href="/seattle">Seattle</a>
-                        <a class="dropdown-item" href="/phoenix">Phoenix</a>
-
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <button class="btn btn-primary my-2 my-sm-0" id="seattleScrape">Get Seattle News Articles</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-danger my-2 my-sm-0" id="seattleEmpty" style="margin-left: 7px">Empty
+                        Seattle News</button>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -46,3 +48,21 @@
             </form>
         </div>
 </header>
+
+<div class="row projs" id="seattleArticles">
+    {{#each seattleArts}}
+    <div class="projCards portItem" id={{this._id}}>
+        <img class="projImg" src={{this.image}} alt={{this.title}}>
+        <div class="cardText">
+            <h5 class="projText">{{this.title}}</h5>
+        </div>
+        <div class="buttons">
+            <a href={{this.link}} target="_blank" class="btn btn-primary">Visit Site</a>
+            <button class="btn btn-primary saveArticle" id={{this._id}}>Save Article</button>
+        </div>
+        <div class="delete">
+            <span class="deleteArticle" data-id={{this._id}}>&#10005;</span>
+        </div>
+    </div>
+    {{/each}}
+</div>

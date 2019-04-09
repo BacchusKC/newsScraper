@@ -1,12 +1,18 @@
-header {
-  height: 100px;
-}
 body {
   padding: 0;
   margin: 0;
+  background-image: url(../images/newspaper.jpg);
+  background-repeat: repeat;
+  background-size: 550px;
 }
 h1 {
   margin: 0;
+}
+#indexTop {
+  height: 120px;
+  background-image: url("../images/newspaper3.jpg");
+  background-size: 200px;
+  background-repeat: repeat;
 }
 .dropdown-header {
   color: black!important;
@@ -15,20 +21,30 @@ h1 {
 .card-img-top {
   width: 250px!important;
 }
-.card {
+#indexMain {
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+  font-size: 100px;
+  padding-top: 0;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+    text-align: center;
+}
+/* .card {
   width: 250px!important;
   margin: 20px;
-}
+  background-color: white;
+} */
 .row {
   margin: auto!important;
   max-width: 900px;
 }
 .projs {
-  position: absolute;
-  left: 0;
-  right: 0;
   max-width: 960px;
-  top: 40px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;   
@@ -36,14 +52,15 @@ h1 {
 .projCards {
   border: 1px solid lightskyblue;
   padding: 10px;
-  margin-top: 50px;
+  margin-top: 40px;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: 250px;
+  width: 260px;
   box-shadow: 10px 10px 5px grey;
   position: relative;
+  background-color: white;
 }
 .projImg {
   width:100%;
@@ -60,6 +77,9 @@ h1 {
 }
 .cardText {
   height: 130px;
+}
+#homePage {
+  height: 100%;
 }
 .delete {
   position: absolute;
@@ -115,4 +135,130 @@ h1 {
 }
 .deleteComment:hover {
   cursor: pointer;
+}
+#kcTop {
+  background-image: url("../images/kc.jpeg");
+  height: 120px;
+  background-size: 750px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
+}
+#denverTop {
+  background-image: url("../images/denver.png");
+  height: 120px;
+  background-size: 850px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
+}
+#seattleTop {
+  background-image: url("../images/seattle.jpg");
+  height: 120px;
+  background-size: 990px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
+}
+#sportsTop {
+  background-image: url("../images/sports.jpg");
+  height: 120px;
+  background-size: 450px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
+}
+#gamingTop {
+  background-image: url("../images/gaming.png");
+  height: 120px;
+  background-size: 870px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
+}
+#savedTop {
+  background-image: url("../images/newspaper3.jpg");
+  height: 120px;
+  background-size: 550px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
+}
+#techTop {
+  background-image: url("../images/tech.jpg");
+  height: 120px;
+  background-size: 550px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
+}
+#usTop {
+  background-image: url("../images/us.jpg");
+  height: 120px;
+  background-size: 610px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
+}
+#worldTop {
+  background-image: url("../images/world.jpg");
+  height: 120px;
+  background-size: 580px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
 }

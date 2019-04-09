@@ -77,6 +77,60 @@ app.get("/commentDelete/:id", function (req, res) {
     });
 })
 
+//Denver News
+
+app.get("/denver", function (req, res) {
+  db.Article.find({ category: "denver", saved: false })
+    .then(function (data) {
+      res.render("denver", { denverArts: data });
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
+app.get("/denverScrape", function (req, res) {
+  axios.get("https://www.thedenverchannel.com/news/local-news").then(function (response) {
+    var $ = cheerio.load(response.data);
+    var tempArray = [];
+    $(".List-items li .List-items-row-item").each(function (i, element) {
+      var result = {};
+      if ($(element).find("h3").text().length > 66) {
+        result.title = $(element).find("h3").text().slice(0, 66) + " ...";
+      } else {
+        result.title = $(element).find("h3").text()
+      }
+      result.link = $(element).find("a").attr("href");
+      result.image = $(element).find("img").attr("src");
+      result.category = "denver";
+      tempArray.push(result);
+    });
+    for (let i = 0; i < tempArray.length; i++) {
+      db.Article.create(tempArray[i])
+        .then(function (dbArticle) {
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    };
+    db.Article.find({ category: "denver", saved: false })
+      .then(function (data) {
+        res.render("denver", { denver: data });
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  });
+});
+
+app.get("/denverDelete", function (req, res) {
+  db.Article.deleteMany({ category: "denver", saved: false })
+    .then(function (data) { })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
 //Gaming
 
 app.get("/gaming", function (req, res) {
@@ -95,12 +149,12 @@ app.get("/gamingScrape", function (req, res) {
     var tempArray = [];
     $(".f-items .f-item").each(function (i, element) {
       var result = {};
-      if ($(element).find("h2").text().length > 62) {
-        result.title = $(element).find("h2").text().slice(0, 60) + " ...";
+      if ($(element).find("h2").text().length > 66) {
+        result.title = $(element).find("h2").text().slice(0, 66) + " ...";
       } else {
         result.title = $(element).find("h2").text()
       }
-      result.link = "https://www.n4g.com"+$(element).find("a").attr("href");
+      result.link = "https://www.n4g.com" + $(element).find("a").attr("href");
       var temp = $(element).find(".si-img").attr("style");
       if (temp !== undefined) {
         var temp2 = temp.split("(")[1];
@@ -157,12 +211,12 @@ app.get("/kcScrape", function (req, res) {
     var tempArray = [];
     $(".main-stage article").each(function (i, element) {
       var result = {};
-      if ($(element).find("h3").children().text().length > 62) {
-        result.title = $(element).find("h3").children().text().slice(0, 60) + " ...";
+      if ($(element).find("h3").children().text().length > 66) {
+        result.title = $(element).find("h3").children().text().slice(0, 66) + " ...";
       } else {
         result.title = $(element).find("h3").children().text()
       }
-      result.link = "https:"+$(element).find("a").attr("href");
+      result.link = "https:" + $(element).find("a").attr("href");
       result.image = $(element).find("img").attr("src");
       result.category = "kc";
       tempArray.push(result);
@@ -187,6 +241,73 @@ app.get("/kcScrape", function (req, res) {
 
 app.get("/kcDelete", function (req, res) {
   db.Article.deleteMany({ category: "kc", saved: false })
+    .then(function (data) { })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
+//Seattle News
+
+app.get("/seattle", function (req, res) {
+  db.Article.find({ category: "seattle", saved: false })
+    .then(function (data) {
+      res.render("seattle", { seattleArts: data });
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
+app.get("/seattleScrape", function (req, res) {
+  axios.get("https://www.kiro7.com/news/local").then(function (response) {
+    var $ = cheerio.load(response.data);
+    var tempArray = [];
+    $("ul.list.media li").each(function (i, element) {
+      var result = {};
+      console.log(element);
+      if ($(element).find("h4").text().length > 80) {
+        result.title = $(element).find("h4").text().slice(0, 80) + " ...";
+      } else {
+        result.title = $(element).find("h4").text()
+      }
+      result.link = $(element).find("a").attr("href");
+      temp = $(element).find(".crop-photo").attr("style");
+      if (temp !== undefined) {
+        var temp2 = temp.split("(")[1];
+        var temp3 = temp2.split(")")[0];
+        result.image = temp3;
+        result.category = "seattle";
+        tempArray.push(result);
+      };
+    });
+    for (let i = 0; i < tempArray.length; i++) {
+      for (let j = 0; j < tempArray.length; j++) {
+        if (tempArray[i].link === tempArray[j].link) {
+          tempArray.splice(j, 1);
+        };
+      };
+    };
+    for (let i = 0; i < tempArray.length; i++) {
+      db.Article.create(tempArray[i])
+        .then(function (dbArticle) {
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    };
+    db.Article.find({ category: "seattle", saved: false })
+      .then(function (data) {
+        res.render("seattle", { seattle: data });
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  });
+});
+
+app.get("/seattleDelete", function (req, res) {
+  db.Article.deleteMany({ category: "seattle", saved: false })
     .then(function (data) { })
     .catch(function (err) {
       res.json(err);
@@ -297,8 +418,8 @@ app.get("/techScrape", function (req, res) {
     var tempArray = [];
     $(".c-compact-river .c-compact-river__entry").each(function (i, element) {
       var result = {};
-      if ($(element).find("h2").children().text().length > 62) {
-        result.title = $(element).find("h2").children().text().slice(0, 60) + " ...";
+      if ($(element).find("h2").children().text().length > 66) {
+        result.title = $(element).find("h2").children().text().slice(0, 66) + " ...";
       } else {
         result.title = $(element).find("h2").children().text()
       }
@@ -351,8 +472,8 @@ app.get("/usScrape", function (req, res) {
     var tempArray = [];
     $(".headline-page li").each(function (i, element) {
       var result = {};
-      if ($(element).find("p").text().length > 62) {
-        result.title = $(element).find("p").text().slice(0, 60) + " ...";
+      if ($(element).find("p").text().length > 66) {
+        result.title = $(element).find("p").text().slice(0, 66) + " ...";
       } else {
         result.title = $(element).find("p").text()
       }
