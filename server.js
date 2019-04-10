@@ -336,31 +336,31 @@ app.get("/sports", function (req, res) {
 });
 
 app.get("/sportsScrape", function (req, res) {
-  // axios.get("https://www.espn.com/").then(function (response) {
-  //   var $ = cheerio.load(response.data);
-  //   
-  //   $(".headlineStack__list li").each(function (i, element) {
-  //     var result = {};
-  //     if ($(element).children().text().length > 66) {
-  //       result.title = $(element).children().text().slice(0, 66) + " ...";
-  //     } else {
-  //       result.title = $(element).children().text()
-  //     }
-  //     result.link = "https://www.espn.com" + $(element).find("a").attr("href");
-  //     result.image = "https://s.yimg.com/ny/api/res/1.2/H0KfThyLaCGPmp5t33fDJA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NTU5O2g9NDIw/http://media.zenfs.com/en-us/homerun/deadline.com/85df3de72a53041a0c4faafeaab9d0f8";
-  //     result.category = "sports";
-  //     tempArray.push(result);
-  //   });
-  //   for (let i = 0; i < tempArray.length; i++) {
-  //     for (let j = 0; j < tempArray.length; j++) {
-  //       if (tempArray[i].link === tempArray[j].link) {
-  //         tempArray.splice(j, 1);
-  //       };
-  //     };
-  //   };
+  axios.get("https://www.espn.com/").then(function (response) {
+    var $ = cheerio.load(response.data);
+    var tempArray = [];
+    $(".headlineStack__list li").each(function (i, element) {
+      var result = {};
+      if ($(element).children().text().length > 66) {
+        result.title = $(element).children().text().slice(0, 66) + " ...";
+      } else {
+        result.title = $(element).children().text()
+      }
+      result.link = "https://www.espn.com" + $(element).find("a").attr("href");
+      result.image = "https://s.yimg.com/ny/api/res/1.2/H0KfThyLaCGPmp5t33fDJA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NTU5O2g9NDIw/http://media.zenfs.com/en-us/homerun/deadline.com/85df3de72a53041a0c4faafeaab9d0f8";
+      result.category = "sports";
+      tempArray.push(result);
+    });
+    for (let i = 0; i < tempArray.length; i++) {
+      for (let j = 0; j < tempArray.length; j++) {
+        if (tempArray[i].link === tempArray[j].link) {
+          tempArray.splice(j, 1);
+        };
+      };
+    };
     axios.get("https://www.sbnation.com/").then(function (response) {
       var $ = cheerio.load(response.data);
-      var tempArray = [];
+      
       $(".c-compact-river .c-compact-river__entry").each(function (i, element) {
         var result = {};
         if ($(element).find("h2").children().text().length > 66) {
@@ -379,15 +379,15 @@ app.get("/sportsScrape", function (req, res) {
         result.category = "sports";
         tempArray.push(result);
       });
-      // function shuffleArray(array) {
-      //   for (var i = array.length - 1; i > 0; i--) {
-      //     var j = Math.floor(Math.random() * (i + 1));
-      //     var temp = array[i];
-      //     array[i] = array[j];
-      //     array[j] = temp;
-      //   };
-      // };
-      // shuffleArray(tempArray);
+      function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+        };
+      };
+      shuffleArray(tempArray);
       for (let i = 0; i < tempArray.length; i++) {
         db.Article.create(tempArray[i])
           .then(function (dbArticle) {
@@ -405,7 +405,7 @@ app.get("/sportsScrape", function (req, res) {
         });
     });
   });
-// });
+});
 
 
 app.get("/sportsDelete", function (req, res) {
