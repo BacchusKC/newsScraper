@@ -102,6 +102,9 @@ app.get("/denverScrape", function (req, res) {
       }
       result.link = $(element).find("a").attr("href");
       result.image = $(element).find("img").attr("src");
+      if (result.image === undefined) {
+        result.image = "https://s3-media1.fl.yelpcdn.com/bphoto/Mu7JHTkENvMk120HzxjUOw/ls.jpg";
+      }
       result.category = "denver";
       tempArray.push(result);
     });
@@ -218,6 +221,9 @@ app.get("/kcScrape", function (req, res) {
       }
       result.link = "https:" + $(element).find("a").attr("href");
       result.image = $(element).find("img").attr("src");
+      if (result.image === undefined) {
+        result.image = "https://static1.squarespace.com/static/53985818e4b0bf76494d369a/t/5ab2f08603ce64a9d7f4f75f/1521676426258/STAR.jpg"
+      }
       result.category = "kc";
       tempArray.push(result);
     });
@@ -277,9 +283,12 @@ app.get("/seattleScrape", function (req, res) {
         var temp2 = temp.split("(")[1];
         var temp3 = temp2.split(")")[0];
         result.image = temp3;
-        result.category = "seattle";
-        tempArray.push(result);
-      };
+      } else {
+        result.image = "https://m.media-amazon.com/images/M/MV5BMGViYWIzNGYtMGJmNi00MmY3LWE3ZGUtZDhjMzViNzRhNDZjL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTIxMDUyOTI@._V1_.jpg"
+      }
+      result.category = "seattle";
+      tempArray.push(result);
+
     });
     for (let i = 0; i < tempArray.length; i++) {
       for (let j = 0; j < tempArray.length; j++) {
@@ -424,7 +433,13 @@ app.get("/techScrape", function (req, res) {
         result.title = $(element).find("h2").children().text()
       }
       result.link = $(element).find("a").attr("href");
-      result.image = "https://assets.fontsinuse.com/static/use-media-items/16/15689/full-1000x924/56702b75/The_Verge_logo.png?resolution=0";
+      var temp = $(element).find("noscript").text();
+      temp = temp.split('"')[3];
+      if (temp !== undefined) {
+        result.image = temp;
+      } else {
+        result.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/The_Verge_logo.svg/1280px-The_Verge_logo.svg.png"
+      }
       result.category = "tech";
       tempArray.push(result);
     });
@@ -479,6 +494,9 @@ app.get("/usScrape", function (req, res) {
       }
       result.link = "https://www.usatoday.com" + $(element).find("a").attr("href");
       result.image = $(element).find("img").attr("src");
+      if (result.image === undefined) {
+        result.image = "https://sugarfactory.com/wp-content/uploads/2016/12/USA-Today-Logo.jpg";
+      };
       result.category = "us";
       tempArray.push(result);
     });
@@ -533,6 +551,9 @@ app.get("/worldScrape", function (req, res) {
       }
       result.link = "https://www.reuters.com" + $(element).find("a").attr("href");
       result.image = $(element).find("img").attr("org-src");
+      if (result.image === undefined) {
+        result.image = "https://i2.wp.com/www.verite.org/wp-content/uploads/2016/12/Reuters_logo.jpg?ssl=1";
+      };
       result.category = "world";
       tempArray.push(result);
     });
