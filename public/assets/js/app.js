@@ -23,13 +23,13 @@ $(document).on("click", ".comments", function () {
     };
     $(".commentsDiv").append("<div class='inputDiv'><textarea class='form-control' name='commentInput' id='inputComment' aria-label='With textarea'></textarea></div></div>");
     $(".commentsDiv").append("<div class='commentButtons'><button class='btn btn-primary' data-id='" + id + "' id='saveComment'>Comment</button><button class='btn btn-danger' style='margin-left: 7px' id='closeComments'>Close</button></div>");
-    $(".commentsDiv").css("display", "block");
+    $(".comDivHolder").css("display", "block");
   });
 });
 
 $(document).on("click", "#closeComments", function () {
   $(".commentsDiv").empty();
-  $(".commentsDiv").css("display", "none");
+  $(".comDivHolder").css("display", "none");
 });
 
 $(document).on("click", "#saveComment", function() {
