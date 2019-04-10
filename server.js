@@ -358,17 +358,23 @@ app.get("/sportsScrape", function (req, res) {
         };
       };
     };
-    axios.get("https://www.bleacherreport.com/").then(function (response) {
+    axios.get("https://www.sbnation.com/").then(function (response) {
       var $ = cheerio.load(response.data);
-      $(".featuredArticles ol li").each(function (i, element) {
+      $(".c-compact-river .c-compact-river__entry").each(function (i, element) {
         var result = {};
-        if ($(element).find("h3").text().length > 66) {
-          result.title = $(element).find("h3").text().slice(0, 66) + " ...";
+        if ($(element).find("h2").children().text().length > 66) {
+          result.title = $(element).find("h2").children().text().slice(0, 66) + " ...";
         } else {
-          result.title = $(element).find("h3").text()
+          result.title = $(element).find("h2").children().text()
         }
         result.link = $(element).find("a").attr("href");
-        result.image = $(element).find("img").attr("src");
+        var temp = $(element).find("noscript").text();
+        temp = temp.split('"')[3];
+        if (temp !== undefined) {
+          result.image = temp;
+        } else {
+          result.image = "https://www.underconsideration.com/brandnew/archives/sbnation_logo_square.png"
+        }
         result.category = "sports";
         tempArray.push(result);
       });
