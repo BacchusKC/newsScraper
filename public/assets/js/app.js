@@ -37,7 +37,7 @@ $(document).on("click", "#saveComment", function() {
   var comment = $("#inputComment").val().trim();
   $.post("/addComment/"+id, {body: comment});
   $(".commentsDiv").empty();
-  $(".commentsDiv").css("display", "none");
+  $(".comDivHolder").css("display", "none");
 });
 
 $(document).on("click", ".deleteComment", function() {
