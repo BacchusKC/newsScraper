@@ -323,6 +323,29 @@ app.get("/seattleDelete", function (req, res) {
     });
 });
 
+//Search
+var search = "";
+app.get("/search", function (req, res) {
+  var results = [];
+  db.Article.find({})
+    .then(function (data) {
+      for (let i = 0; i < data.length; i++) {
+        var n = data[i].title.toLowerCase().includes(search.toLowerCase())
+        if (n) {
+          results.push(data[i]);
+        };
+      };
+      res.render("search", { searchData: results});
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
+app.post("/startSearch", function (req, res) {
+  search = req.body.search;
+});
+
 //Sports
 
 app.get("/sports", function (req, res) {
@@ -360,7 +383,7 @@ app.get("/sportsScrape", function (req, res) {
     };
     axios.get("https://www.sbnation.com/").then(function (response) {
       var $ = cheerio.load(response.data);
-      
+
       $(".c-compact-river .c-compact-river__entry").each(function (i, element) {
         var result = {};
         if ($(element).find("h2").children().text().length > 66) {

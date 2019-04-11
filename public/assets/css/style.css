@@ -231,6 +231,20 @@ h1 {
     2px 2px 0 #000;
   font-size: 70px;
 }
+#searchTop {
+  background-image: url("../images/search.png");
+  height: 120px;
+  background-size: 420px;
+  background-position: center;
+  text-align: center;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  font-size: 70px;
+}
 #techTop {
   background-image: url("../images/tech.jpg");
   height: 120px;

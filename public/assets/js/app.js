@@ -3,13 +3,31 @@
 $(document).on("click", ".saveArticle", function () {
   var id = this.id;
   $(this).parents(".projCards").remove();
-  $.get("/saveArticle/" + id).then(function (data){});
+  $.get("/saveArticle/" + id).then(function (data) { });
 });
 
 $(document).on("click", ".deleteArticle", function () {
   var id = $(this).data().id;
   $(this).parent().parent().remove();
-  $.get("/savedDelete/" + id).then(function (data){});
+  $.get("/savedDelete/" + id).then(function (data) { });
+});
+
+$(document).on("click", "#searchButton", function () {
+  var searchVar = $("#searchBar").val().trim();
+  $.post("/startSearch", { search: searchVar });
+  $("#searchBar").val("");
+});
+
+$(document).ready(function () {
+  $("#searchBar").keypress(function (key) {
+    if (key.keyCode == 13) {
+      event.preventDefault();
+      var searchVar = $("#searchBar").val().trim();
+      $.post("/startSearch", { search: searchVar });
+      $("#searchBar").val("");
+      window.location.replace("/search");
+    };
+  });
 });
 
 //saved
@@ -32,18 +50,18 @@ $(document).on("click", "#closeComments", function () {
   $(".comDivHolder").css("display", "none");
 });
 
-$(document).on("click", "#saveComment", function() {
+$(document).on("click", "#saveComment", function () {
   var id = $(this).data().id;
   var comment = $("#inputComment").val().trim();
-  $.post("/addComment/"+id, {body: comment});
+  $.post("/addComment/" + id, { body: comment });
   $(".commentsDiv").empty();
   $(".comDivHolder").css("display", "none");
 });
 
-$(document).on("click", ".deleteComment", function() {
+$(document).on("click", ".deleteComment", function () {
   var id = $(this).data().id;
   $(this).parent().remove();
-  $.get("/commentDelete/"+id).then(function(data){});
+  $.get("/commentDelete/" + id).then(function (data) { });
 });
 
 //Denver News
@@ -56,7 +74,7 @@ $(document).on("click", "#denverScrape", function () {
 
 $(document).on("click", "#denverEmpty", function () {
   $("#denverArticles").children().remove();
-  $.get("/denverDelete").then(function (data){});
+  $.get("/denverDelete").then(function (data) { });
 });
 
 //Gaming
@@ -69,7 +87,7 @@ $(document).on("click", "#gamingScrape", function () {
 
 $(document).on("click", "#gamingEmpty", function () {
   $("#gamingArticles").children().remove();
-  $.get("/gamingDelete").then(function (data){});
+  $.get("/gamingDelete").then(function (data) { });
 });
 
 //KC News
@@ -82,7 +100,7 @@ $(document).on("click", "#kcScrape", function () {
 
 $(document).on("click", "#kcEmpty", function () {
   $("#kcArticles").children().remove();
-  $.get("/kcDelete").then(function (data){});
+  $.get("/kcDelete").then(function (data) { });
 });
 
 //Seattle News
@@ -95,7 +113,7 @@ $(document).on("click", "#seattleScrape", function () {
 
 $(document).on("click", "#seattleEmpty", function () {
   $("#seattleArticles").children().remove();
-  $.get("/seattleDelete").then(function (data){});
+  $.get("/seattleDelete").then(function (data) { });
 });
 
 //Sports
@@ -108,7 +126,7 @@ $(document).on("click", "#sportsScrape", function () {
 
 $(document).on("click", "#sportsEmpty", function () {
   $("#sportsArticles").children().remove();
-  $.get("/sportsDelete").then(function (data){});
+  $.get("/sportsDelete").then(function (data) { });
 });
 
 //Tech News
@@ -121,7 +139,7 @@ $(document).on("click", "#techScrape", function () {
 
 $(document).on("click", "#techEmpty", function () {
   $("#techArticles").children().remove();
-  $.get("/techDelete").then(function (data){});
+  $.get("/techDelete").then(function (data) { });
 });
 
 //US News
@@ -134,7 +152,7 @@ $(document).on("click", "#usScrape", function () {
 
 $(document).on("click", "#usEmpty", function () {
   $("#usArticles").children().remove();
-  $.get("/usDelete").then(function (data){});
+  $.get("/usDelete").then(function (data) { });
 });
 
 //World News
@@ -147,5 +165,5 @@ $(document).on("click", "#worldScrape", function () {
 
 $(document).on("click", "#worldEmpty", function () {
   $("#worldArticles").children().remove();
-  $.get("/worldDelete").then(function (data){});
+  $.get("/worldDelete").then(function (data) { });
 });
