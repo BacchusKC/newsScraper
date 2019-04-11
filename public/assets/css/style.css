@@ -5,6 +5,7 @@ body {
   background-repeat: repeat;
   background-size: 550px;
   position: relative;
+  min-height: calc(100vh);
 }
 .buttons {
   position: absolute;
@@ -83,11 +84,41 @@ body {
   color: black!important;
   font-size: larger!important;
 }
+#footer {
+  height: 120px;
+  background-color: darkgray;
+  border-top: 5px solid lightyellow;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.footLinks {
+  text-decoration: none;
+  color: #ffffff;
+}
+.footLinks:hover {
+  text-decoration: none;
+  color: #fcd060;
+}
+.footerText {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 10px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 25px;
+  font-size: 20px;
+  color: #ffffff;
+  font-family: 'Glegoo', serif;
+}
 h1 {
   margin: 0;
 }
 #homePage {
-  height: 100%;
+  height: calc(100vh - 396px);
 }
 #indexTop {
   height: 120px;
@@ -119,7 +150,8 @@ h1 {
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;   
+  text-align: center;
+  padding-bottom: 170px;   
 }
 .projCards {
   border: 1px solid lightskyblue;
