@@ -46,6 +46,7 @@
 <div class="row projs searchArticles">
     {{#each searchData}}
     <div class="projCards portItem" id={{this._id}}>
+        <h1><u>{{this.category}}</u></h1>
         <img class="projImg" src={{this.image}} alt={{this.title}}>
         <div class="cardText">
             <h5 class="projText">{{this.title}}</h5>
