@@ -80,7 +80,7 @@ app.get("/commentDelete/:id", function (req, res) {
 //Denver News
 
 app.get("/denver", function (req, res) {
-  db.Article.find({ category: "denver", saved: false })
+  db.Article.find({ category: "Denver", saved: false })
     .then(function (data) {
       res.render("denver", { denverArts: data });
     })
@@ -105,7 +105,7 @@ app.get("/denverScrape", function (req, res) {
       if (result.image === undefined) {
         result.image = "https://s3-media1.fl.yelpcdn.com/bphoto/Mu7JHTkENvMk120HzxjUOw/ls.jpg";
       }
-      result.category = "denver";
+      result.category = "Denver";
       tempArray.push(result);
     });
     for (let i = 0; i < tempArray.length; i++) {
@@ -116,7 +116,7 @@ app.get("/denverScrape", function (req, res) {
           console.log(err);
         });
     };
-    db.Article.find({ category: "denver", saved: false })
+    db.Article.find({ category: "Denver", saved: false })
       .then(function (data) {
         res.render("denver", { denver: data });
       })
@@ -127,7 +127,7 @@ app.get("/denverScrape", function (req, res) {
 });
 
 app.get("/denverDelete", function (req, res) {
-  db.Article.deleteMany({ category: "denver", saved: false })
+  db.Article.deleteMany({ category: "Denver", saved: false })
     .then(function (data) { })
     .catch(function (err) {
       res.json(err);
@@ -137,7 +137,7 @@ app.get("/denverDelete", function (req, res) {
 //Gaming
 
 app.get("/gaming", function (req, res) {
-  db.Article.find({ category: "gaming", saved: false })
+  db.Article.find({ category: "Gaming", saved: false })
     .then(function (data) {
       res.render("gaming", { gamingArts: data });
     })
@@ -167,7 +167,7 @@ app.get("/gamingScrape", function (req, res) {
       else {
         result.image = "http://www.userlogos.org/files/logos/letspretend/n4g.png"
       }
-      result.category = "gaming";
+      result.category = "Gaming";
       tempArray.push(result);
     });
     for (let i = 0; i < tempArray.length; i++) {
@@ -178,7 +178,7 @@ app.get("/gamingScrape", function (req, res) {
           console.log(err);
         });
     };
-    db.Article.find({ category: "gaming", saved: false })
+    db.Article.find({ category: "Gaming", saved: false })
       .then(function (data) {
         res.render("gaming", { gamingArts: data });
       })
@@ -189,7 +189,7 @@ app.get("/gamingScrape", function (req, res) {
 });
 
 app.get("/gamingDelete", function (req, res) {
-  db.Article.deleteMany({ category: "gaming", saved: false })
+  db.Article.deleteMany({ category: "Gaming", saved: false })
     .then(function (data) { })
     .catch(function (err) {
       res.json(err);
@@ -199,7 +199,7 @@ app.get("/gamingDelete", function (req, res) {
 //KC News
 
 app.get("/kc", function (req, res) {
-  db.Article.find({ category: "kc", saved: false })
+  db.Article.find({ category: "Kansas City", saved: false })
     .then(function (data) {
       res.render("kc", { kcArts: data });
     })
@@ -224,7 +224,7 @@ app.get("/kcScrape", function (req, res) {
       if (result.image === undefined) {
         result.image = "https://static1.squarespace.com/static/53985818e4b0bf76494d369a/t/5ab2f08603ce64a9d7f4f75f/1521676426258/STAR.jpg"
       }
-      result.category = "kc";
+      result.category = "Kansas City";
       tempArray.push(result);
     });
     for (let i = 0; i < tempArray.length; i++) {
@@ -235,7 +235,7 @@ app.get("/kcScrape", function (req, res) {
           console.log(err);
         });
     };
-    db.Article.find({ category: "kc", saved: false })
+    db.Article.find({ category: "Kansas City", saved: false })
       .then(function (data) {
         res.render("kc", { kc: data });
       })
@@ -246,7 +246,7 @@ app.get("/kcScrape", function (req, res) {
 });
 
 app.get("/kcDelete", function (req, res) {
-  db.Article.deleteMany({ category: "kc", saved: false })
+  db.Article.deleteMany({ category: "Kansas City", saved: false })
     .then(function (data) { })
     .catch(function (err) {
       res.json(err);
@@ -256,7 +256,7 @@ app.get("/kcDelete", function (req, res) {
 //Seattle News
 
 app.get("/seattle", function (req, res) {
-  db.Article.find({ category: "seattle", saved: false })
+  db.Article.find({ category: "Seattle", saved: false })
     .then(function (data) {
       res.render("seattle", { seattleArts: data });
     })
@@ -286,7 +286,7 @@ app.get("/seattleScrape", function (req, res) {
       } else {
         result.image = "https://m.media-amazon.com/images/M/MV5BMGViYWIzNGYtMGJmNi00MmY3LWE3ZGUtZDhjMzViNzRhNDZjL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTIxMDUyOTI@._V1_.jpg"
       }
-      result.category = "seattle";
+      result.category = "Seattle";
       tempArray.push(result);
 
     });
@@ -305,7 +305,7 @@ app.get("/seattleScrape", function (req, res) {
           console.log(err);
         });
     };
-    db.Article.find({ category: "seattle", saved: false })
+    db.Article.find({ category: "Seattle", saved: false })
       .then(function (data) {
         res.render("seattle", { seattle: data });
       })
@@ -316,7 +316,7 @@ app.get("/seattleScrape", function (req, res) {
 });
 
 app.get("/seattleDelete", function (req, res) {
-  db.Article.deleteMany({ category: "seattle", saved: false })
+  db.Article.deleteMany({ category: "Seattle", saved: false })
     .then(function (data) { })
     .catch(function (err) {
       res.json(err);
@@ -349,7 +349,7 @@ app.post("/startSearch", function (req, res) {
 //Sports
 
 app.get("/sports", function (req, res) {
-  db.Article.find({ category: "sports", saved: false })
+  db.Article.find({ category: "Sports", saved: false })
     .then(function (data) {
       res.render("sports", { sportsArts: data });
     })
@@ -371,7 +371,7 @@ app.get("/sportsScrape", function (req, res) {
       }
       result.link = "https://www.espn.com" + $(element).find("a").attr("href");
       result.image = "https://s.yimg.com/ny/api/res/1.2/H0KfThyLaCGPmp5t33fDJA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NTU5O2g9NDIw/http://media.zenfs.com/en-us/homerun/deadline.com/85df3de72a53041a0c4faafeaab9d0f8";
-      result.category = "sports";
+      result.category = "Sports";
       tempArray.push(result);
     });
     for (let i = 0; i < tempArray.length; i++) {
@@ -399,7 +399,7 @@ app.get("/sportsScrape", function (req, res) {
         } else {
           result.image = "https://www.underconsideration.com/brandnew/archives/sbnation_logo_square.png"
         }
-        result.category = "sports";
+        result.category = "Sports";
         tempArray.push(result);
       });
       function shuffleArray(array) {
@@ -419,7 +419,7 @@ app.get("/sportsScrape", function (req, res) {
             console.log(err);
           });
       };
-      db.Article.find({ category: "sports", saved: false })
+      db.Article.find({ category: "Sports", saved: false })
         .then(function (data) {
           res.render("sports", { sportsArts: data });
         })
@@ -432,7 +432,7 @@ app.get("/sportsScrape", function (req, res) {
 
 
 app.get("/sportsDelete", function (req, res) {
-  db.Article.deleteMany({ category: "sports", saved: false })
+  db.Article.deleteMany({ category: "Sports", saved: false })
     .then(function (data) { })
     .catch(function (err) {
       res.json(err);
@@ -442,7 +442,7 @@ app.get("/sportsDelete", function (req, res) {
 //Tech News
 
 app.get("/tech", function (req, res) {
-  db.Article.find({ category: "tech", saved: false })
+  db.Article.find({ category: "Tech", saved: false })
     .then(function (data) {
       res.render("tech", { techArts: data });
     })
@@ -470,7 +470,7 @@ app.get("/techScrape", function (req, res) {
       } else {
         result.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/The_Verge_logo.svg/1280px-The_Verge_logo.svg.png"
       }
-      result.category = "tech";
+      result.category = "Tech";
       tempArray.push(result);
     });
     for (let i = 0; i < tempArray.length; i++) {
@@ -481,7 +481,7 @@ app.get("/techScrape", function (req, res) {
           console.log(err);
         });
     };
-    db.Article.find({ category: "tech", saved: false })
+    db.Article.find({ category: "Tech", saved: false })
       .then(function (data) {
         res.render("tech", { techArts: data });
       })
@@ -492,7 +492,7 @@ app.get("/techScrape", function (req, res) {
 });
 
 app.get("/techDelete", function (req, res) {
-  db.Article.deleteMany({ category: "tech", saved: false })
+  db.Article.deleteMany({ category: "Tech", saved: false })
     .then(function (data) { })
     .catch(function (err) {
       res.json(err);
@@ -502,7 +502,7 @@ app.get("/techDelete", function (req, res) {
 //US News
 
 app.get("/us", function (req, res) {
-  db.Article.find({ category: "us", saved: false })
+  db.Article.find({ category: "US News", saved: false })
     .then(function (data) {
       res.render("us", { usArts: data });
     })
@@ -527,7 +527,7 @@ app.get("/usScrape", function (req, res) {
       if (result.image === undefined) {
         result.image = "https://sugarfactory.com/wp-content/uploads/2016/12/USA-Today-Logo.jpg";
       };
-      result.category = "us";
+      result.category = "US News";
       tempArray.push(result);
     });
     for (let i = 0; i < tempArray.length; i++) {
@@ -538,7 +538,7 @@ app.get("/usScrape", function (req, res) {
           console.log(err);
         });
     };
-    db.Article.find({ category: "us", saved: false })
+    db.Article.find({ category: "US News", saved: false })
       .then(function (data) {
         res.render("us", { usArts: data });
       })
@@ -549,7 +549,7 @@ app.get("/usScrape", function (req, res) {
 });
 
 app.get("/usDelete", function (req, res) {
-  db.Article.deleteMany({ category: "us", saved: false })
+  db.Article.deleteMany({ category: "US News", saved: false })
     .then(function (data) { })
     .catch(function (err) {
       res.json(err);
@@ -559,7 +559,7 @@ app.get("/usDelete", function (req, res) {
 //World News
 
 app.get("/world", function (req, res) {
-  db.Article.find({ category: "world", saved: false })
+  db.Article.find({ category: "World News", saved: false })
     .then(function (data) {
       res.render("world", { worldArts: data });
     })
@@ -584,7 +584,7 @@ app.get("/worldScrape", function (req, res) {
       if (result.image === undefined) {
         result.image = "https://i2.wp.com/www.verite.org/wp-content/uploads/2016/12/Reuters_logo.jpg?ssl=1";
       };
-      result.category = "world";
+      result.category = "World News";
       tempArray.push(result);
     });
     for (let i = 0; i < tempArray.length; i++) {
@@ -595,7 +595,7 @@ app.get("/worldScrape", function (req, res) {
           console.log(err);
         });
     };
-    db.Article.find({ category: "world", saved: false })
+    db.Article.find({ category: "World News", saved: false })
       .then(function (data) {
         res.render("world", { worldArts: data });
       })
@@ -606,7 +606,7 @@ app.get("/worldScrape", function (req, res) {
 });
 
 app.get("/worldDelete", function (req, res) {
-  db.Article.deleteMany({ category: "world", saved: false })
+  db.Article.deleteMany({ category: "World News", saved: false })
     .then(function (data) { })
     .catch(function (err) {
       res.json(err);
