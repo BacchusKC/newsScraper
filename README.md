@@ -11,3 +11,4 @@ It was designed to show skills in back-end design and was also designed mainly f
 
 To use the app, first choose your category in the dropdown menu, then either look through already scrapped articles or get new ones. You can get new articles with the "Get ..." button and empty old articles with the "Empty ..." button.
 
+![News](/assets/images/newsScraper.jpg)
